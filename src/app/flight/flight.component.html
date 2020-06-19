@@ -1,0 +1,18 @@
+<mat-grid-list cols="5" rowHeight="2:1" *ngFor="let item of listArray">
+    <mat-grid-tile> <img src="https://logos.skyscnr.com/images/airlines/favicon/{{item.airline_id}}.png">
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="upper">{{item.departure_time | date:'HH:mm'}} <div class="lower">{{item.departure_airport }}</div></div>
+    </mat-grid-tile>
+    <mat-grid-tile><mat-icon aria-hidden="false" aria-label="Example home icon">east</mat-icon></mat-grid-tile>
+    <mat-grid-tile>  <div class="upper">{{item.duration_mins | m2h}}
+        <div class="lower" *ngIf='item.stops === 0'> Direct </div>
+        <div class="lower" *ngIf='item.stops != 0'> 1 Stop</div>
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile> <div class="upper"> {{item.arrival_time | date:'HH:mm'}}
+        <div> {{item.arrival_airport}}</div>
+    </div>   
+        
+      </mat-grid-tile>
+</mat-grid-list>
